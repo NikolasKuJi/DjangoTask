@@ -1,0 +1,18 @@
+{% extends "shared/_navbar.dj.html" %}
+{% load static %}
+
+{% block body_navbar %}
+{% for post in post_list %}
+<div class="card mb-3">
+<h5 class="card-header">{{ post.title }}</h5>
+<div class="card-body">
+    <p class="card-text">{{ post.text|truncatechars:200 }}</p>
+    <a href="{% url "djangotaskapp:post" post_id=post.id %}" class="card-link">Читать далее</a>
+</div>
+<div class="card-footer text-body-secondary d-flex">
+    <span>{{ post.likes }} лайков, {{ post.comment_set.all.count }} комментариев</span>
+    <span class="ms-auto">{{ post.date }}</span>
+</div>
+</div>
+{% endfor %}
+{% endblock %}

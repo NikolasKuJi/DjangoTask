@@ -1,0 +1,26 @@
+{% extends "shared/_navbar.dj.html" %}
+{% load static %}
+
+{% block body_navbar %}
+<div class="card">
+<h5 class="card-header">{{ post.title }}</h5>
+<div class="card-body">
+    <p class="card-text">{{ post.text }}</p>
+</div>
+<div class="card-footer text-body-secondary d-flex align-items-center">
+    <span><button type="button" class="btn btn-link">
+            <i class="bi bi-hand-thumbs-up" style="font-size: 2rem;"></i>
+    </button></span>
+    <span>{{ post.likes }} лайков, {{ post.comment_set.all.count }} комментариев</span>
+    <span class="ms-auto">{{ post.date }}</span>
+</div>
+<ul class="list-group list-group-flush">
+    {% for comment in post.comment_set.all %}
+    <li class="list-group-item text-body-secondary">
+        <div class="text-end">{{ comment.date }}</div>
+        <div>{{ comment.text }}</div>
+    </li>
+    {% endfor %}
+</ul>
+</div>
+{% endblock %}

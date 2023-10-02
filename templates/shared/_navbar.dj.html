@@ -1,0 +1,22 @@
+{% extends "shared/_layout.dj.html" %}
+{% load static %}
+
+{% block styles %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static "styles/shared/navbar.css" %}">
+{% endblock %}
+
+{% block scripts %}
+    {{ block.super }}
+    <script src="{% static "scripts/shared/navbar.js" %}"></script>
+{% endblock %}
+
+{% block body %}
+<div class="container mb-3">
+    <h1><a href="{% url "djangotaskapp:index" %}">Учебный блог</a></h1>
+</div>
+<div class="container">
+{% block body_navbar %}{% endblock %}
+</div>
+
+{% endblock %}
